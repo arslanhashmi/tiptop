@@ -1,0 +1,23 @@
+{% extends 'music/base.html' %}
+{% block title %} Album details {% endblock %}
+{% block body %}
+
+    {% if error_msg %}
+        <strong>{{ error_msg }}</strong><br>
+    {% endif %}
+
+    <img src="{{ album.album_logo }}" alt="">
+    <h2>Album title: {{ album.album_title }}</h2>
+    <h3>Singer: {{ album.artist }}</h3>
+
+    {% for song in album.song_set.all %}
+        <label for="song{{ forloop.counter }}">
+            {{ song.song_title }}
+        </label>
+        {% if song.is_favourite %}
+            <img src="http://i.imgur.com/b9b13Rd.png" alt="Favourite">
+        {% endif %}
+        <br>
+    {% endfor %}
+    <br>
+{% endblock %}

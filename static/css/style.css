@@ -1,0 +1,16 @@
+body{
+    background: #e5e5e5 url("/static/images/background.jpeg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-brand {
+    font-family: 'Oleo Script', Helvetica, sans-serif;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
