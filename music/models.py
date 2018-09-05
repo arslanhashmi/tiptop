@@ -6,7 +6,8 @@ class Album(models.Model):
     artist = models.CharField(max_length=100)
     album_title = models.CharField(max_length=100)
     genre = models.CharField(max_length=100)
-    album_logo = models.CharField(max_length=300)
+    album_logo = models.FileField()
+    is_favourite = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         return reverse('music:detail', kwargs={'pk': self.pk})
@@ -20,6 +21,9 @@ class Song(models.Model):
     file_type = models.CharField(max_length=10)
     song_title = models.CharField(max_length=100)
     is_favourite = models.BooleanField(default=False)
+
+    def get_absolute_url(self):
+        return reverse('music:detail', kwargs={'pk': self.album.pk})
 
     def __str__(self):
         return f'{self.song_title}'

@@ -1,6 +1,6 @@
 {% extends 'music/base.html' %}
-{% block title %}Add a New Album{% endblock %}
-{% block albums_active %}active{% endblock %}
+{% block title %}Add a New song{% endblock %}
+{% block song_active %}active{% endblock %}
 
 {% block body %}
     <div class="container-fluid">
@@ -10,10 +10,11 @@
             <div class="col-sm-12 col-md-7">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <h3>Add a New Album</h3>
+                        <h3>Add a New song</h3>
                         {% if error_message %}
                             <p><strong>{{ error_message }}</strong></p>
                         {% endif %}
+                        <h1>Add new song in {{ album }}</h1>
                         <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {% include 'music/form_template.html' %}
