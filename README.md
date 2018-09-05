@@ -7,7 +7,7 @@ This project includes a complete music application made in Django to handle user
 1. Assuming you are having Python 3.7 already in your machine.
 1. Setup environment:
     1. cd tiptip
-    1. virtualenv -p python3.5 ~/.virtualenvs/tiptip
+    1. virtualenv -p python3.7 ~/.virtualenvs/tiptip
     1. source ~/.virtualenvs/tiptip/bin/activate
     1. pip install -r requirements.txt
 1. Migrate:
