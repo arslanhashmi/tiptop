@@ -20,7 +20,7 @@ class IndexView(generic.ListView):
         return super(IndexView, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
-        return Album.objects.all()
+        return Album.objects.filter(user=self.request.user)
 
 
 class SongView(generic.ListView):
@@ -32,9 +32,10 @@ class SongView(generic.ListView):
         return super(SongView, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
+        songs = Song.objects.filter(album__user=self.request.user)
         if self.kwargs.get('filter') == 'favorites':
-            return Song.objects.filter(is_favourite=True)
-        return Song.objects.all()
+            songs = songs.filter(is_favourite=True)
+        return songs
 
     def get_context_data(self, **kwargs):
         context = super(SongView, self).get_context_data(**kwargs)
@@ -61,6 +62,9 @@ class AlbumCreate(CreateView):
     def dispatch(self, request, *args, **kwargs):
         return super(AlbumCreate, self).dispatch(request, *args, **kwargs)
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 class SongCreate(CreateView):
     model = Song
