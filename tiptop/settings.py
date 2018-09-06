@@ -16,7 +16,8 @@ SECRET_KEY = '^bxlqz3#6t(mat_(1$jn4ssa3y2=!mlb#*zbi(*#a3j*k2xbz#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+if not DEBUG:
+    ALLOWED_HOSTS = ["*"]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 STATIC_URL = '/assets/'

@@ -66,6 +66,7 @@ class AlbumCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+
 class SongCreate(CreateView):
     model = Song
     fields = ['file_type', 'song_title', 'is_favourite']
@@ -169,3 +170,7 @@ class FavouriteSong(View):
         song.is_favourite = True
         song.save()
         return redirect('music:songs', 'all')
+
+
+def handler404(request, exception):
+    return render(request, 'errors/404.html', locals())
